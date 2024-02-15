@@ -12,7 +12,8 @@ namespace DataAccess.Entities
     {
         [Required]
         [StringLength(100)]
-        public string MovieName { get; set; }
+        public string Name { get; set; }
+
         public DateTime? ReleaseDate { get; set; }
         public decimal? BoxOffice {  get; set; }
         public Director Director { get; set; }

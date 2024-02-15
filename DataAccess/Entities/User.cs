@@ -15,9 +15,11 @@ namespace DataAccess.Entities
         [Required]
         [StringLength(20)]
         public string UserName { get; set; }
+
         [Required]
         [StringLength(20)]
         public string Password { get; set; }
+
         public bool IsActive { get; set; }
         public Statuses Status { get; set; }
         public int RoleId { get; set; }
