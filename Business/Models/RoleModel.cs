@@ -22,10 +22,9 @@ namespace Business.Models
         #endregion
 
         #region Extra Properties
+        [DisplayName("Users")]
         public int UserCount { get; set; }
         public string Users { get; set; }
-        [DisplayName("Names")]
-        public string UserNamesOutput { get; set; }
         #endregion
     }
 }

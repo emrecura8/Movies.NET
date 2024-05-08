@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class v1 : Migration
+    public partial class v2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,17 +18,11 @@ namespace DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    DirectorId = table.Column<int>(type: "int", nullable: true),
-                    MovieId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Guid = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Directors", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Directors_Directors_DirectorId",
-                        column: x => x.DirectorId,
-                        principalTable: "Directors",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -38,7 +32,7 @@ namespace DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MovieId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Guid = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -61,7 +55,7 @@ namespace DataAccess.Migrations
                     ImdbRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     LetterboxdRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TomatoesRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    MovieId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Guid = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -85,7 +79,7 @@ namespace DataAccess.Migrations
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
-                    MovieId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Guid = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -105,7 +99,8 @@ namespace DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: false)
+                    MovieId = table.Column<int>(type: "int", nullable: false),
+                    Guid = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -123,11 +118,6 @@ namespace DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Directors_DirectorId",
-                table: "Directors",
-                column: "DirectorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Movies_DirectorId",

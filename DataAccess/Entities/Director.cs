@@ -14,6 +14,6 @@ namespace DataAccess.Entities
         [Required]
         [StringLength(100)]
         public string Name { get; set; }
-        public List<Director> Directors { get; set; }
+        public List<Movie> Movies { get; set; }
     }
 }

@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(Db))]
-    [Migration("20240219124821_v1")]
-    partial class v1
+    [Migration("20240508173754_v2")]
+    partial class v2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -33,10 +33,7 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("DirectorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MovieId")
+                    b.Property<string>("Guid")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -45,8 +42,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DirectorId");
 
                     b.ToTable("Directors");
                 });
@@ -68,6 +63,9 @@ namespace DataAccess.Migrations
                     b.Property<int>("DirectorId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Guid")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("ImdbRate")
                         .HasColumnType("decimal(18,2)");
 
@@ -79,9 +77,6 @@ namespace DataAccess.Migrations
 
                     b.Property<decimal>("LetterboxdRate")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("MovieId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -109,7 +104,7 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("MovieId")
+                    b.Property<string>("Guid")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -128,11 +123,11 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Guid")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
-
-                    b.Property<string>("MovieId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -165,6 +160,9 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Guid")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
@@ -180,17 +178,10 @@ namespace DataAccess.Migrations
                     b.ToTable("UserMovies");
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.Director", b =>
-                {
-                    b.HasOne("DataAccess.Entities.Director", null)
-                        .WithMany("Directors")
-                        .HasForeignKey("DirectorId");
-                });
-
             modelBuilder.Entity("DataAccess.Entities.Movie", b =>
                 {
                     b.HasOne("DataAccess.Entities.Director", "Director")
-                        .WithMany()
+                        .WithMany("Movies")
                         .HasForeignKey("DirectorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -230,7 +221,7 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("DataAccess.Entities.Director", b =>
                 {
-                    b.Navigation("Directors");
+                    b.Navigation("Movies");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.Movie", b =>

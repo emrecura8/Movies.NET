@@ -36,7 +36,7 @@ namespace Business.Services
                 return new ErrorResult("Role with the same name exists.");
             Role entity = new Role()
             {
-                MovieId = Guid.NewGuid().ToString(),
+                Guid = Guid.NewGuid().ToString(),
                 Name = model.Name.Trim(),
             };
             _db.Roles.Add(entity);
@@ -59,7 +59,7 @@ namespace Business.Services
         {
             return _db.Roles.Include(r => r.Users).OrderByDescending(r => r.Users.Count).ThenBy(r => r.Name).Select(roleEntity => new RoleModel()
             {
-                MovieId = roleEntity.MovieId,
+                Guid = roleEntity.Guid,
                 Id = roleEntity.Id,
                 Name = roleEntity.Name,
 
