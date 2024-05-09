@@ -61,7 +61,7 @@ namespace Movies.NET.Controllers
             {
                 Result result = _directorService.Add(director);
                 if(result.IsSuccessful)
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index));
                 ModelState.AddModelError("",result.Message);
             }
             // TODO: Add get related items service logic here to set ViewData if necessary

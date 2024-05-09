@@ -3,7 +3,7 @@
 @*Model namespace using directive should be added to _ViewImports.cshtml.*@
 
 @{
-    ViewData["Title"] = "Create Director";
+    ViewData["Title"] = "Create";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -18,7 +18,7 @@
             <div class="row mb-3">
                 <label asp-for="Name" class="col-2 col-form-label"></label>
 				    <div class="col-5">
-					    <input asp-for="Name" class="form-control" />
+					    <input asp-for="Name" class="form-control"/>
 					    <span asp-validation-for="Name" class="text-danger"></span>
 				    </div>
             </div>
