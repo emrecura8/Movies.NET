@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class v2 : Migration
+    public partial class v5 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,10 +51,7 @@ namespace DataAccess.Migrations
                     DirectorId = table.Column<int>(type: "int", nullable: false),
                     Length = table.Column<int>(type: "int", nullable: false),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Language = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImdbRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    LetterboxdRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TomatoesRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Guid = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

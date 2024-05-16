@@ -1,4 +1,5 @@
 ﻿using Business.Models;
+using Business.Services.Bases;
 using DataAccess.Context;
 using DataAccess.Entities;
 using DataAccess.Results;
@@ -20,14 +21,10 @@ namespace Business.Services
         Result Update(DirectorModel model);
         Result Delete(int id);
     }
-    public class DirectorService : IDirectorService
+    public class DirectorService : ServiceBase, IDirectorService
     {
-        private readonly Db _db;
+        public DirectorService (Db db): base(db) { }
 
-        public DirectorService(Db db)
-        {
-            _db = db;
-        }
 
         public IQueryable<DirectorModel> Query()
         {

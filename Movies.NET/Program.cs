@@ -11,6 +11,8 @@ builder.Services.AddDbContext<Db>(options=>options.UseSqlServer(connectionString
 
 builder.Services.AddScoped<IRoleService,RoleService>();
 builder.Services.AddScoped<IDirectorService,DirectorService>();
+builder.Services.AddScoped<IUserService,UserService>();
+builder.Services.AddScoped<IMovieService,MovieService>();
 #endregion
 
 builder.Services.AddControllersWithViews();

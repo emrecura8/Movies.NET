@@ -1,0 +1,91 @@
+﻿@model MovieModel
+@*Generated from Custom Template.*@
+@*Model namespace using directive should be added to _ViewImports.cshtml.*@
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-12">
+        <form asp-action="Create">
+		@Html.AntiForgeryToken()
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row mb-3">
+                <label asp-for="Name" class="col-2 col-form-label"></label>
+				<div class="col-5">
+					<input asp-for="Name" class="form-control" />
+					<span asp-validation-for="Name" class="text-danger"></span>
+				</div>
+            </div>
+            <div class="row mb-3">
+                <label asp-for="ReleaseDate" class="col-2 col-form-label"></label>
+				<div class="col-5">
+					<input asp-for="ReleaseDate" class="form-control" />
+					<span asp-validation-for="ReleaseDate" class="text-danger"></span>
+				</div>
+            </div>
+            <div class="row mb-3">
+                <label asp-for="BoxOffice" class="col-2 col-form-label"></label>
+				<div class="col-5">
+					<input asp-for="BoxOffice" class="form-control" />
+					<span asp-validation-for="BoxOffice" class="text-danger"></span>
+				</div>
+            </div>
+            <div class="row mb-3">
+                <label asp-for="DirectorId" class="col-2 col-form-label"></label>
+				<div class="col-5">
+					<select asp-for="DirectorId" class="form-select" asp-items="ViewBag.DirectorId">
+						<option value="">-- Select --</option>
+					</select>
+					<span asp-validation-for="DirectorId" class="text-danger"></span>
+				</div>
+            </div>
+            <div class="row mb-3">
+                <label asp-for="Length" class="col-2 col-form-label"></label>
+				<div class="col-5">
+					<input asp-for="Length" class="form-control" />
+					<span asp-validation-for="Length" class="text-danger"></span>
+				</div>
+            </div>
+            <div class="row mb-3">
+                <label asp-for="Country" class="col-2 col-form-label"></label>
+				<div class="col-5">
+					<input asp-for="Country" class="form-control" />
+					<span asp-validation-for="Country" class="text-danger"></span>
+				</div>
+            </div>
+            <div class="row mb-3">
+                <label asp-for="ImdbRate" class="col-2 col-form-label"></label>
+				<div class="col-5">
+					<input asp-for="ImdbRate" class="form-control" />
+					<span asp-validation-for="ImdbRate" class="text-danger"></span>
+				</div>
+            </div>
+            <div class="row mb-3">
+                <label asp-for="Guid" class="col-2 col-form-label"></label>
+				<div class="col-5">
+					<input asp-for="Guid" class="form-control" />
+					<span asp-validation-for="Guid" class="text-danger"></span>
+				</div>
+            </div>
+            <div class="row mb-3">
+				<div class="offset-2 col-5">
+					<input type="submit" value="Save" class="btn btn-primary" />
+					&nbsp;&nbsp;
+                    <button type="reset" class="btn btn-outline-primary">Reset</button>
+					&nbsp;&nbsp;
+					<a asp-action="Index">Back to List</a>
+				</div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+

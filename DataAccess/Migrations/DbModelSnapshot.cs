@@ -66,14 +66,8 @@ namespace DataAccess.Migrations
                     b.Property<decimal>("ImdbRate")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Language")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Length")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("LetterboxdRate")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -82,9 +76,6 @@ namespace DataAccess.Migrations
 
                     b.Property<DateTime?>("ReleaseDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("TomatoesRate")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

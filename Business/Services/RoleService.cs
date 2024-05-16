@@ -1,4 +1,5 @@
 ﻿using Business.Models;
+using Business.Services.Bases;
 using DataAccess.Context;
 using DataAccess.Entities;
 using DataAccess.Results;
@@ -21,13 +22,12 @@ namespace Business.Services
 
     }
 
-    public class RoleService : IRoleService
+    public class RoleService : ServiceBase, IRoleService
     {
-        private readonly Db _db;
-
-        public RoleService(Db db)
+       
+        public RoleService(Db db) : base(db)
         {
-            _db = db;
+           
         }
 
         public Result Add(RoleModel model)

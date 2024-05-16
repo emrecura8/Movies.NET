@@ -21,10 +21,7 @@ namespace DataAccess.Entities
         public int DirectorId { get; set; }
         public int Length {  get; set; }
         public string Country {get; set; }
-        public string Language { get; set; }
         public decimal ImdbRate { get; set; }
-        public decimal LetterboxdRate { get; set; }
-        public decimal TomatoesRate { get; set; }
         public List<UserMovie> UserMovies { get; set; }
 
 

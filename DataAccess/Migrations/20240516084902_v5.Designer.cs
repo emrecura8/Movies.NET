@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(Db))]
-    [Migration("20240508173754_v2")]
-    partial class v2
+    [Migration("20240516084902_v5")]
+    partial class v5
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,14 +69,8 @@ namespace DataAccess.Migrations
                     b.Property<decimal>("ImdbRate")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Language")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Length")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("LetterboxdRate")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -85,9 +79,6 @@ namespace DataAccess.Migrations
 
                     b.Property<DateTime?>("ReleaseDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("TomatoesRate")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
