@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using Movies.NET.Controllers.Bases;
 using Movies.NET.Models;
 using System.Diagnostics;
 
 namespace Movies.NET.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : MVCControllerBase
     {
         private readonly ILogger<HomeController> _logger;
 

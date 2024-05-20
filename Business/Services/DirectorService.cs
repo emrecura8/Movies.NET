@@ -44,7 +44,6 @@ namespace Business.Services
                 return new ErrorResult("Director with the same name exists!");
             Director entity = new Director()
             {
-                Guid = Guid.NewGuid().ToString(),
                 Name = model.Name.Trim(),
             };
 

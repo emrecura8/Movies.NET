@@ -11,11 +11,12 @@ using DataAccess.Entities;
 using Business.Services;
 using Business.Models;
 using DataAccess.Results.Bases;
+using Movies.NET.Controllers.Bases;
 
 //Generated from Custom Template.
 namespace Movies.NET.Controllers
 {
-    public class DirectorsController : Controller
+    public class DirectorsController : MVCControllerBase
     {
         // TODO: Add service injections here
         private readonly IDirectorService _directorService;

@@ -35,7 +35,7 @@
 						@Html.DisplayFor(modelItem => item.Name)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.Movies)
+						@Html.Raw(item.Movies)
 					</td>
 					<td class="text-end">
 						<a asp-action="Details" asp-route-id="@item.Id">Details</a>&nbsp;|&nbsp;
@@ -46,6 +46,7 @@
 		}
     </tbody>
 </table>
+
 
 
 

@@ -11,12 +11,13 @@ using DataAccess.Entities;
 using Business.Services;
 using Business.Models;
 using DataAccess.Results.Bases;
+using Movies.NET.Controllers.Bases;
 
 
 //Generated from Custom Template.
 namespace Movies.NET.Controllers
 {
-    public class RolesController : Controller
+    public class RolesController : MVCControllerBase
     {
         // TODO: Add service injections here
         private readonly IRoleService _roleService;

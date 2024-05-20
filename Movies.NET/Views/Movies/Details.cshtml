@@ -3,7 +3,7 @@
 @*Model namespace using directive should be added to _ViewImports.cshtml.*@
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Movie Details";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -21,58 +21,63 @@
         </dl>
         <dl class="row">
             <dt class="col-2">
-                @Html.DisplayNameFor(model => model.ReleaseDate)
+                @Html.DisplayNameFor(model => model.ReleaseDateOutput)
             </dt>
             <dd class="col-10">
-                @Html.DisplayFor(model => model.ReleaseDate)
+                @Html.DisplayFor(model => model.ReleaseDateOutput)
             </dd>
         </dl>
         <dl class="row">
             <dt class="col-2">
-                @Html.DisplayNameFor(model => model.BoxOffice)
+                @Html.DisplayNameFor(model => model.TotalBoxOfficeOutput)
             </dt>
             <dd class="col-10">
-                @Html.DisplayFor(model => model.BoxOffice)
+                @Html.DisplayFor(model => model.TotalBoxOfficeOutput)
             </dd>
         </dl>
         <dl class="row">
             <dt class="col-2">
-                @Html.DisplayNameFor(model => model.DirectorId)
+                @Html.DisplayNameFor(model => model.DirectorOutput)
             </dt>
             <dd class="col-10">
-                @Html.DisplayFor(model => model.DirectorId)
+                @Html.DisplayFor(model => model.DirectorOutput)
+            </dd>
+        <dl class="row">
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.Users)
+            </dt>
+            <dd class="col-10">
+                @foreach(var user in Model.Users)
+                {
+                    @(user.UserName + "("+user.Status+")")
+                    <br>
+                }
+            </dd>
+        </dl>
+        </dl>
+
+        <dl class="row">
+            <dt class="col-2">
+                @Html.DisplayNameFor(model => model.LengthOutput)
+            </dt>
+            <dd class="col-10">
+                @Html.DisplayFor(model => model.LengthOutput)
             </dd>
         </dl>
         <dl class="row">
             <dt class="col-2">
-                @Html.DisplayNameFor(model => model.Length)
+                @Html.DisplayNameFor(model => model.CountryOutput)
             </dt>
             <dd class="col-10">
-                @Html.DisplayFor(model => model.Length)
+                @Html.DisplayFor(model => model.CountryOutput)
             </dd>
         </dl>
         <dl class="row">
             <dt class="col-2">
-                @Html.DisplayNameFor(model => model.Country)
+                @Html.DisplayNameFor(model => model.ImdbRateOutput)
             </dt>
             <dd class="col-10">
-                @Html.DisplayFor(model => model.Country)
-            </dd>
-        </dl>
-        <dl class="row">
-            <dt class="col-2">
-                @Html.DisplayNameFor(model => model.ImdbRate)
-            </dt>
-            <dd class="col-10">
-                @Html.DisplayFor(model => model.ImdbRate)
-            </dd>
-        </dl>
-        <dl class="row">
-            <dt class="col-2">
-                @Html.DisplayNameFor(model => model.Guid)
-            </dt>
-            <dd class="col-10">
-                @Html.DisplayFor(model => model.Guid)
+                @Html.DisplayFor(model => model.ImdbRateOutput)
             </dd>
         </dl>
 </div>

@@ -36,7 +36,7 @@ namespace Business.Services
                 return new ErrorResult("Role with the same name exists.");
             Role entity = new Role()
             {
-                Guid = Guid.NewGuid().ToString(),
+                
                 Name = model.Name.Trim(),
             };
             _db.Roles.Add(entity);

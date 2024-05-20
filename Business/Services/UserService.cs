@@ -61,7 +61,6 @@ namespace Business.Services
 
             User entity = new User()
             {
-                Guid = Guid.NewGuid().ToString(),
                 IsActive = model.isActive,
                 Password = model.Password.Trim(),
 

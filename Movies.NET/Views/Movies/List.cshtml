@@ -11,34 +11,30 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="datatable" class="display" style="width:100%;">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
+                @Html.DisplayNameFor(model => model.ReleaseDateOutput)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BoxOffice)
+                @Html.DisplayNameFor(model => model.TotalBoxOfficeOutput)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DirectorId)
+                @Html.DisplayNameFor(model => model.DirectorOutput)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Length)
+                @Html.DisplayNameFor(model => model.LengthOutput)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Country)
+                @Html.DisplayNameFor(model => model.CountryOutput)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImdbRate)
+                @Html.DisplayNameFor(model => model.ImdbRateOutput)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Guid)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -48,25 +44,22 @@
 						@Html.DisplayFor(modelItem => item.Name)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.ReleaseDate)
+						@Html.DisplayFor(modelItem => item.ReleaseDateOutput)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.BoxOffice)
+						@Html.DisplayFor(modelItem => item.TotalBoxOfficeOutput)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.DirectorId)
+						@Html.DisplayFor(modelItem => item.DirectorOutput)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.Length)
+						@Html.DisplayFor(modelItem => item.LengthOutput)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.Country)
+						@Html.DisplayFor(modelItem => item.CountryOutput)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.ImdbRate)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Guid)
+						@Html.DisplayFor(modelItem => item.ImdbRateOutput)
 					</td>
 					<td>
 						<a asp-action="Details" asp-route-id="@item.Id">Details</a>&nbsp;|&nbsp;
@@ -78,5 +71,15 @@
     </tbody>
 </table>
 
+@section Scripts {
+    <link href="~/lib/datatables/css/jquery.datatables.min.css" rel="stylesheet" />
+    <script src="~/lib/datatables/js/jquery.datatables.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#datatable").DataTable();
+        });
+    </script>
+}
 
 

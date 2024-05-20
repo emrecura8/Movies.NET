@@ -39,5 +39,23 @@ namespace Business.Models
         public decimal ImdbRate { get; set; }
         #endregion
 
+        #region Extra Properties
+        [DisplayName("Release Date")]
+        public string ReleaseDateOutput { get; set; }
+        [DisplayName("Box Office")]
+        public string TotalBoxOfficeOutput {  get; set; }
+        [DisplayName("Director")]
+        public string DirectorOutput { get; set; }
+        [DisplayName("Users")]
+        public List<int>UsersInput { get; set; }
+        public List<UserModel> Users { get; set; }
+        [DisplayName("Length")]
+        public string LengthOutput { get; set; }
+        [DisplayName("Country")]
+        public string CountryOutput { get; set; }
+        [DisplayName("Imdb Rate")]
+        public string ImdbRateOutput { get; set; }
+        #endregion
+
     }
 }
