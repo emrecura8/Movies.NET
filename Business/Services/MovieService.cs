@@ -13,6 +13,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 #nullable disable
 
 namespace Business.Services
@@ -60,9 +62,9 @@ namespace Business.Services
                 UsersInput = m.UserMovies.Select(um=>um.UserId).ToList(),
 
                 TotalBoxOfficeOutput=(m.BoxOffice??0).ToString("C2"),
-                LengthOutput=m.Length.ToString("C2"),
-                CountryOutput=m.Country.ToString(),
-                ImdbRateOutput=m.ImdbRate.ToString(),
+                LengthOutput=m.Length.ToString(),
+				CountryOutput=m.Country.ToString(),
+                ImdbRateOutput=m.ImdbRate.ToString(1 == 0 ? "0":"0.0"),
 
                
                 
@@ -81,6 +83,7 @@ namespace Business.Services
                 Length = model.Length,
                 DirectorId = (int)model.DirectorId,
                 BoxOffice = model.BoxOffice,
+                ImdbRate = model.ImdbRate,
 
                 UserMovies = model.UsersInput?.Select(userInput => new UserMovie()
                 {
@@ -103,11 +106,11 @@ namespace Business.Services
         Result IMovieService.Update(MovieModel model)
         {
             if (_db.Movies.Any(m => m.Id != model.Id && m.Name.ToLower() == model.Name.ToLower().Trim()))
-                return new ErrorResult("Game with same name exists");
+                return new ErrorResult("Movie with same name exists");
 
             Movie entity = _db.Movies.Include(m=>m.UserMovies).SingleOrDefault(m=>m.Id == model.Id);
 
-            if (entity == null) return new ErrorResult("Game not found");
+            if (entity == null) return new ErrorResult("Movie not found");
 
             _db.UserMovies.RemoveRange(entity.UserMovies);
 
@@ -117,7 +120,8 @@ namespace Business.Services
             entity.Length = model.Length;
             entity.DirectorId = (int)model.DirectorId;
             entity.BoxOffice = model.BoxOffice;
-
+            entity.ImdbRate = model.ImdbRate;
+      
             entity.UserMovies = model.UsersInput?.Select(userInput => new UserMovie()
             {
                 UserId=userInput
