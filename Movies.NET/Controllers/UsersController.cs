@@ -12,10 +12,12 @@ using Business.Services;
 using Business.Models;
 using DataAccess.Results.Bases;
 using Movies.NET.Controllers.Bases;
+using Microsoft.AspNetCore.Authorization;
 
 //Generated from Custom Template.
 namespace Movies.NET.Controllers
 {
+    [Authorize]
     public class UsersController : MVCControllerBase
     {
         // TODO: Add service injections here
@@ -29,6 +31,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Users
+        [AllowAnonymous]
         public IActionResult Index()
         {
             List<UserModel> userList = _userService.GetList(); // TODO: Add get collection service logic here
@@ -47,6 +50,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Users/Create
+        [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
             // TODO: Add get related items service logic here to set ViewData if necessary
@@ -59,6 +63,7 @@ namespace Movies.NET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public IActionResult Create(UserModel user)
         {
             if (ModelState.IsValid)
@@ -78,6 +83,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Users/Edit/5
+        [Authorize(Roles = "admin")]
         public IActionResult Edit(int id)
         {
             UserModel user = _userService.GetItem(id); // TODO: Add get item service logic here
@@ -95,6 +101,7 @@ namespace Movies.NET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public IActionResult Edit(UserModel user)
         {
             if (ModelState.IsValid)
@@ -113,6 +120,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Users/Delete/5
+        [Authorize(Roles = "admin")]
         public IActionResult Delete(int id)
         {
             UserModel user = _userService.GetItem(id); // TODO: Add get item service logic here
@@ -126,6 +134,7 @@ namespace Movies.NET.Controllers
         // POST: Users/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public IActionResult DeleteConfirmed(int id)
         {
             // TODO: Add delete service logic here

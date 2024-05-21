@@ -1,7 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Movies.NET";
+﻿@using Movies.NET.Settings
+@{
+    ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to my MOVIES.NET project!</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h1 class="display-4">Welcome to @AppSettings.Title ! <b>@User.Identity.Name</b></h1>
+    }
+    else
+    {
+        <h1 class="display-4">Welcome to @AppSettings.Title !</h1>
+    }
 </div>

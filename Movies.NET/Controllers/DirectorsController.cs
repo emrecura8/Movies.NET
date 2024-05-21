@@ -12,10 +12,12 @@ using Business.Services;
 using Business.Models;
 using DataAccess.Results.Bases;
 using Movies.NET.Controllers.Bases;
+using Microsoft.AspNetCore.Authorization;
 
 //Generated from Custom Template.
 namespace Movies.NET.Controllers
 {
+    [Authorize(Roles ="admin")]
     public class DirectorsController : MVCControllerBase
     {
         // TODO: Add service injections here

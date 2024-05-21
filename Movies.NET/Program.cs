@@ -1,8 +1,24 @@
 using Business.Services;
 using DataAccess.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Movies.NET.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region AppSettings
+builder.Configuration.GetSection(nameof(AppSettings)).Bind(new AppSettings());
+#endregion
+
+#region Authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.LoginPath = "/Account/Home/Login";
+    options.AccessDeniedPath = "/Account/Home/AccessDenied";
+    options.ExpireTimeSpan = TimeSpan.FromDays(1);
+    options.SlidingExpiration = true;
+});
+#endregion
 
 // Add services to the container.
 #region IoC Container
@@ -32,7 +48,19 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+#region Authentication
+app.UseAuthentication();
+#endregion
+
 app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.MapControllerRoute(
     name: "default",

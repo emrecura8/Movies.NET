@@ -11,10 +11,12 @@ using DataAccess.Entities;
 using Business.Services;
 using Business.Models;
 using Movies.NET.Controllers.Bases;
+using Microsoft.AspNetCore.Authorization;
 
 //Generated from Custom Template.
 namespace Movies.NET.Controllers
 {
+    [Authorize]
     public class MoviesController : MVCControllerBase
     {
         // TODO: Add service injections here
@@ -49,6 +51,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Movies/Create
+        [Authorize(Roles = "user")]
         public IActionResult Create()
         {
             // TODO: Add get related items service logic here to set ViewData if necessary
@@ -62,6 +65,7 @@ namespace Movies.NET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "user")]
         public IActionResult Create(MovieModel movie)
         {
             if (ModelState.IsValid)
@@ -78,6 +82,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Movies/Edit/5
+        [Authorize(Roles = "user")]
         public IActionResult Edit(int id)
         {
             MovieModel movie = _movieService.GetItem(id); // TODO: Add get item service logic here
@@ -96,6 +101,7 @@ namespace Movies.NET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "user")]
         public IActionResult Edit(MovieModel movie)
         {
             if (ModelState.IsValid)
@@ -111,21 +117,11 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Movies/Delete/5
+        [Authorize(Roles = "user")]
         public IActionResult Delete(int id)
         {
-            MovieModel movie = null; // TODO: Add get item service logic here
-            if (movie == null)
-            {
-                return NotFound();
-            }
-            return View(movie);
-        }
-
-        // POST: Movies/Delete
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
-        {
+            var result = _movieService.Delete(id);
+            TempData["Message"]= result.Message;
             // TODO: Add delete service logic here
             return RedirectToAction(nameof(Index));
         }

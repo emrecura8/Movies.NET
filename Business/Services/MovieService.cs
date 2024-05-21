@@ -100,7 +100,14 @@ namespace Business.Services
 
         Result IMovieService.Delete(int id)
         {
-            throw new NotImplementedException();
+           Movie entity = _db.Movies.Include(m=>m.UserMovies).SingleOrDefault(m=>m.Id==id);
+            if (entity is null) return new ErrorResult("Movie not found");
+            _db.UserMovies.RemoveRange(entity.UserMovies);
+
+            _db.Movies.Remove(entity);
+            _db.SaveChanges();
+
+            return new SuccessResult("Movie deleted succesfully");
         }
 
         Result IMovieService.Update(MovieModel model)
