@@ -9,6 +9,6 @@ namespace DataAccess.Enums
     public enum Roles
     {
         Admin = 1,
-        User=4
+        User = 4
     }
 }

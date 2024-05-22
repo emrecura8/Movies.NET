@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 //Generated from Custom Template.
 namespace Movies.NET.Controllers
 {
-    [Authorize(Roles ="admin")]
+    [Authorize(Roles ="Admin")] 
     public class DirectorsController : MVCControllerBase
     {
         // TODO: Add service injections here

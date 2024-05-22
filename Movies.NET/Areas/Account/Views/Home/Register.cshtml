@@ -14,14 +14,14 @@
             @Html.AntiForgeryToken()
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="row mb-3">
-                <label asp-for="UserName" class="col-2 col-form-label"></label>
+                <label asp-for="UserName" class="col-2 col-form-label">Username</label>
                 <div class="col-5">
                     <input asp-for="UserName" class="form-control" />
                     <span asp-validation-for="UserName" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-3">
-                <label asp-for="Password" class="col-2 col-form-label"></label>
+                <label asp-for="Password" class="col-2 col-form-label">Passwordd</label>
                 <div class="col-5">
                     <input asp-for="Password" class="form-control password" type="password" />
                     <span asp-validation-for="Password" class="text-danger"></span>
@@ -46,8 +46,8 @@
 </div>
 
 @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
     <script>
-            <partial name = "_ValidationScriptsPartial" />
         $(function () {
             $("#register").click(function (event) {
                 event.preventDefault();

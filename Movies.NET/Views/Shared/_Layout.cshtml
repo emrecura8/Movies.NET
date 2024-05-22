@@ -20,21 +20,29 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        
                         @if (User.Identity.IsAuthenticated)
                         {
-                            @if (User.IsInRole("admin"))
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Favorites" asp-action="Index">Favorites</a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Role</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Directors" asp-action="Index">Directors</a>
-                                </li>
+                                </li> 
                             }
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index">Movies</a>
+                            </li>
                         }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
                         </li>
+                        
                     </ul>
                     <div class="navbar-text">
                             <ul class="navbar-nav me-auto">

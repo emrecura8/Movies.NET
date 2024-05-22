@@ -51,7 +51,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Movies/Create
-        [Authorize(Roles = "user")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             // TODO: Add get related items service logic here to set ViewData if necessary
@@ -65,7 +65,7 @@ namespace Movies.NET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "user")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(MovieModel movie)
         {
             if (ModelState.IsValid)
@@ -82,7 +82,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Movies/Edit/5
-        [Authorize(Roles = "user")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             MovieModel movie = _movieService.GetItem(id); // TODO: Add get item service logic here
@@ -101,7 +101,7 @@ namespace Movies.NET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "user")]
+        //[Authorize(Roles = "user")]
         public IActionResult Edit(MovieModel movie)
         {
             if (ModelState.IsValid)
@@ -117,7 +117,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Movies/Delete/5
-        [Authorize(Roles = "user")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var result = _movieService.Delete(id);

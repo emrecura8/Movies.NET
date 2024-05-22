@@ -20,6 +20,14 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 });
 #endregion
 
+#region Session
+builder.Services.AddSession(config =>
+{
+    config.IdleTimeout = TimeSpan.FromMinutes(30);
+    config.IOTimeout = Timeout.InfiniteTimeSpan;
+});
+#endregion
+
 // Add services to the container.
 #region IoC Container
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -53,6 +61,10 @@ app.UseAuthentication();
 #endregion
 
 app.UseAuthorization();
+
+#region Session
+app.UseSession();
+#endregion
 
 app.UseEndpoints(endpoints =>
 {

@@ -13,7 +13,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
-@if (User.IsInRole("user"))
+@if (User.IsInRole("Admin"))
 {
     <p>
         <a asp-action="Create">Create New</a>
@@ -41,7 +41,7 @@
                 @Html.DisplayNameFor(model => model.CountryOutput)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImdbRateOutput)
+                @Html.DisplayNameFor(model => model.ImdbRate)
             </th>
         </tr>
     </thead>
@@ -72,12 +72,14 @@
 					<td>
                         @if (User.Identity.IsAuthenticated)
                     {
+                        <a asp-action="Add" asp-controller="Favorites" asp-route-movieId="@item.Id">Add to Favorites</a>
+                        @:&nbsp;|&nbsp;
                         <a asp-action="Details" asp-route-id="@item.Id">Details</a>@:&nbsp;|&nbsp;
 
-                        @if (User.IsInRole("user"))
+                        @if (User.IsInRole("Admin"))
                         {
                             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>@:&nbsp;|&nbsp;
-                            <a href="#" onclick="deleteMovie(@item.Id)" ;>Delete</a>
+                            <a href="#" onclick="deleteMovie(@item.Id);">Delete</a>
                         }
                     }
                 </td>

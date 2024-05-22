@@ -50,7 +50,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Users/Create
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             // TODO: Add get related items service logic here to set ViewData if necessary
@@ -63,7 +63,7 @@ namespace Movies.NET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(UserModel user)
         {
             if (ModelState.IsValid)
@@ -83,7 +83,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Users/Edit/5
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id)
         {
             UserModel user = _userService.GetItem(id); // TODO: Add get item service logic here
@@ -101,7 +101,7 @@ namespace Movies.NET.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Edit(UserModel user)
         {
             if (ModelState.IsValid)
@@ -120,7 +120,7 @@ namespace Movies.NET.Controllers
         }
 
         // GET: Users/Delete/5
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             UserModel user = _userService.GetItem(id); // TODO: Add get item service logic here
@@ -134,7 +134,7 @@ namespace Movies.NET.Controllers
         // POST: Users/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteConfirmed(int id)
         {
             // TODO: Add delete service logic here
